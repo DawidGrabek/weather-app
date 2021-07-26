@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Error = () => {
-  return <p className="error">City not found</p>;
-};
+  return <p className="error">City not found</p>
+}
 
-export default Error;
+export default Error
