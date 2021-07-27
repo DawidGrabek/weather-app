@@ -2,11 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FiSunrise, FiSunset } from 'react-icons/fi'
 
-const setTime = (time) => {
-  return new Date(time * 1000).toLocaleTimeString().slice(0, 5)
-}
+import { setIconUrl, setTime } from '../helpers/weatherFunctions'
 
-const MainWeather = ({ data, setIconUrl }) => {
+const MainWeather = ({ data }) => {
   const { name, sunrise, sunset } = data.city
   const { temp: tempDay } = data.list[0].main
   const { temp: tempNight } = data.list[4].main
@@ -53,7 +51,6 @@ MainWeather.propTypes = {
       })
     ),
   }).isRequired,
-  setIconUrl: PropTypes.func.isRequired,
 }
 
 export default MainWeather

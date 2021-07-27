@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-
 import './App.css'
-import { BASE_URL, BASE_URL_IMG } from './constants'
+
 import {
   Input,
   MainWeather,
@@ -12,43 +11,27 @@ import {
 } from './components'
 import useDebounce from './hooks/useDebounce'
 
-const setIconUrl = (icon) => `${BASE_URL_IMG}/${icon}@2x.png`
+import { fetchData, setError } from './actions/WeatherActions'
+import { useSelector, useDispatch } from 'react-redux'
 
 function App() {
   const [inputValue, setInputValue] = useState('')
-  const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
-  const [futureData, setFutureData] = useState([])
-  const debounce = useDebounce()
 
-  useEffect(() => {
-    if (!inputValue) setError(false)
-  }, [inputValue, error])
+  const debounce = useDebounce()
+  const dispatch = useDispatch()
+  const { data, futureData, error, loading } = useSelector((state) => state)
 
   const inputHandler = (e) => {
     setInputValue(e.target.value)
-
-    debounce(() => {
-      const url = `${BASE_URL}/data/2.5/forecast?q=${e.target.value}&units=metric&appid=${process.env.REACT_APP_API_WEATHER_KEY}`
-
-      fetch(url)
-        .then((res) => {
-          if (!res.ok) {
-            setError(true)
-            throw Error('Something went wrong')
-          }
-          return res.json()
-        })
-        .then((data) => {
-          setData(data)
-          setFutureData(data.list)
-          setError(false)
-        })
-        .catch(() => {
-          setError(true)
-        })
-    })
   }
+
+  useEffect(() => {
+    if (!inputValue) dispatch(() => setError(false))
+  }, [inputValue, error, dispatch])
+
+  useEffect(() => {
+    if (inputValue) debounce(() => dispatch(fetchData(inputValue)))
+  }, [inputValue, dispatch])
 
   return (
     <div className="App">
@@ -56,10 +39,10 @@ function App() {
       {error && <Error />}
       {data && (
         <>
-          <MainWeather data={data} setIconUrl={setIconUrl} />
+          <MainWeather data={data} />
           <WeatherChart futureData={futureData} />
-          <BarWeather futureData={futureData} setIconUrl={setIconUrl} />
-          <SpecificData futureData={futureData} />
+          <BarWeather futureData={futureData} />
+          <SpecificData futureData={futureData} loading={loading} />
         </>
       )}
     </div>

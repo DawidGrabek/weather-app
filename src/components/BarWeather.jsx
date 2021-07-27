@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const setTime = (time) => {
-  return new Date(time * 1000).toLocaleString('en-US', { weekday: 'short' })
-}
+import { setIconUrl, setWeekDayNameShort } from '../helpers/weatherFunctions'
 
-const BarWeather = ({ futureData, setIconUrl }) => {
+const BarWeather = ({ futureData }) => {
   return (
     <ul className="bar-container">
       {futureData
@@ -17,7 +15,9 @@ const BarWeather = ({ futureData, setIconUrl }) => {
           const { temp } = item.main
           return (
             <li key={dt} className="bar-container__item">
-              <span className="bar-container__week-day">{setTime(dt)}</span>
+              <span className="bar-container__week-day">
+                {setWeekDayNameShort(dt)}
+              </span>
               <img
                 src={setIconUrl(icon)}
                 alt="Weather icon"
@@ -45,7 +45,6 @@ BarWeather.propTypes = {
       }),
     })
   ).isRequired,
-  setIconUrl: PropTypes.func.isRequired,
 }
 
 export default BarWeather

@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 
 const Input = ({ inputValue, inputHandler }) => {
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
   return (
     <input
       type="text"
@@ -8,6 +14,7 @@ const Input = ({ inputValue, inputHandler }) => {
       placeholder="Where do you live?"
       value={inputValue}
       onChange={(e) => inputHandler(e)}
+      ref={inputRef}
     />
   )
 }
