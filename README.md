@@ -1,6 +1,6 @@
 # It's only easy weather app
 
-## On branch I will refactor this to using redux
+## On branches I will create some variations with this app
 
 ## To install all dependecies and run server:
 
