@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
+import './css/main.css'
 
 import {
   Input,
@@ -8,6 +8,7 @@ import {
   BarWeather,
   SpecificData,
   Error,
+  Loader,
 } from './components'
 import useDebounce from './hooks/useDebounce'
 
@@ -37,6 +38,7 @@ function App() {
     <div className="App">
       <Input inputValue={inputValue} inputHandler={inputHandler} />
       {error && <Error />}
+      {loading && <Loader />}
       {data && (
         <>
           <MainWeather data={data} />
