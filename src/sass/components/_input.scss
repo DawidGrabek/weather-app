@@ -1,0 +1,17 @@
+@use './sass-utils/variables' as *;
+
+.search-input {
+  width: 15rem;
+  padding: 1rem;
+  margin: 1.6rem 1rem 1.2rem;
+  background: linear-gradient(
+    to right bottom,
+    $input-background-color-primary,
+    $input-background-color-secondary
+  );
+  font-family: inherit;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}

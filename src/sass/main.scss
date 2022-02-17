@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+@import './sass-utils/variables';
+@import './components/bar-container';
+@import './components/chart';
+@import './components/error';
+@import './components/input';
+@import './components/main-weather';
+@import './components/tile';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 900px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  font-family: $font-stack;
+  color: $main-font-color;
+  background: linear-gradient(
+    to right top,
+    $main-background-color-primary,
+    $main-background-color-secondary
+  );
+}
+
+iframe {
+  pointer-events: none;
+}
+
+.App {
+  text-align: center;
+}

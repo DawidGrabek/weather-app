@@ -1,0 +1,7 @@
+@use './sass-utils/variables' as *;
+
+.error {
+  color: $red;
+  font-size: 2rem;
+  font-weight: 700;
+}
