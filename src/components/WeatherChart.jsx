@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { Line } from 'react-chartjs-2'
+
+const temperatureColor = 'rgba(106, 38, 207, 0.6)'
+const windChillColor = 'rgba(55, 185, 241, 0.6)'
 
 const WeatherChart = ({ futureData }) => {
   const data = {
@@ -9,18 +13,18 @@ const WeatherChart = ({ futureData }) => {
       {
         label: 'Temperature',
         data: futureData.map((item) => item.main.temp),
-        borderColor: ['rgba(106, 38, 207, 0.6)'],
-        backgroundColor: ['rgba(106, 38, 207, 0.6)'],
-        pointBackgroundColor: 'rgba(106, 38, 207, 0.6)',
-        pointBorderColor: 'rgba(106, 38, 207, 0.6)',
+        borderColor: [temperatureColor],
+        backgroundColor: [temperatureColor],
+        pointBackgroundColor: temperatureColor,
+        pointBorderColor: temperatureColor,
       },
       {
         label: 'Wind chill',
         data: futureData.map((item) => item.main.feels_like),
-        borderColor: ['rgba(55, 185, 241, 0.6)'],
-        backgroundColor: ['rgba(55, 185, 241, 0.6)'],
-        pointBackgroundColor: 'rgba(55, 185, 241, 0.6)',
-        pointBorderColor: 'rgba(55, 185, 241, 0.6)',
+        borderColor: [windChillColor],
+        backgroundColor: [windChillColor],
+        pointBackgroundColor: windChillColor,
+        pointBorderColor: windChillColor,
       },
     ],
   }
