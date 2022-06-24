@@ -1,4 +1,4 @@
-@use './sass-utils/variables' as *;
+@import './sass-utils/variables'; // should be @use, but sass throw error
 
 .search-input {
   width: 15rem;
