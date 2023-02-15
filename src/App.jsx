@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (!inputValue) dispatch(() => setError(false))
+    if (!inputValue && inputValue !== '') dispatch(() => setError(false))
   }, [inputValue, error, dispatch])
 
   useEffect(() => {
