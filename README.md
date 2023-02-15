@@ -1,10 +1,10 @@
-# It's only easy weather app
+# Final look: ***https://dawidgrabek.github.io/weather-app/***
 
-## On branches I will create some variations with this app
-
-## To install all dependecies and run server:
+## Or clone repository, install all dependencies and run server:
 
 ```sh
 npm install
 npm start
 ```
+
+The main goal of this project is showing that I can use redux with asynchronous methods.
